@@ -1,0 +1,18 @@
+:host {
+  height: 100%;
+}
+
+.nav {
+  height: 100%;
+  gap: 30px;
+  border-top: 1px solid #484848;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: white;
+}
+
+.active{
+  color: red;
+}

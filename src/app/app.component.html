@@ -1,1 +1,33 @@
-<p>Mon titre {{ title }}</p>
+<header class="fixed-top navbar navbar-dark bg-dark">
+
+  <!--<app-header></app-header>-->
+
+  <button class="navbar-toggler" type="button" (click)="handleClick()">
+    <app-nav-icon *ngIf="!openAside"></app-nav-icon>
+    <app-close-icon *ngIf="openAside"></app-close-icon>
+  </button>
+</header>
+
+<main [ngClass]="{'close-aside': !openAside}">
+  <div class="shadow position-fixed">
+  </div>
+
+  <!-- ICI LE MENU -->
+  <aside>
+    <div class="scroller">
+      <app-nav></app-nav>
+
+    </div>
+  </aside>
+
+  <!-- ICI LA PARTIE CENTRALE DE LA PAGE -->
+  <div class="page">
+    <div class="contents">
+      <router-outlet></router-outlet>
+    </div>
+    <footer>
+      footer
+    </footer>
+  </div>
+
+</main>

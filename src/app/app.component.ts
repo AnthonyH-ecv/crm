@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'crm';
+  openAside = false;
+
+  handleClick() {
+    this.openAside = !this.openAside
+  }
 }
