@@ -1,1 +1,19 @@
-<p>page-list-orders works!</p>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th *ngFor="let header of headers">{{ header }}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let order of orders$ |async">
+    <td>Actions</td>
+    <td>{{ order.typePresta }}</td>
+    <td>{{ order.client }}</td>
+    <td>{{ order.nbJours }}</td>
+    <td>{{ order.tjmHt }}</td>
+    <td>{{ order.tjmHt | total: order.nbJours | currency}}</td>
+    <td>{{order.tjmHt | total: order.nbJours: order.tva | currency }}</td>
+    <td appState [orderState]="order.state">{{order.state }}</td>
+  </tr>
+  </tbody>
+</table>

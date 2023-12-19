@@ -1,1 +1,16 @@
-<p>page-list-clients works!</p>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th *ngFor="let header of headers">{{ header }}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let client of clients$ |async">
+    <td>{{ client.name }}</td>
+    <td>{{ client.comment }}</td>
+    <td>{{ client.state }}</td>
+    <td>{{ client.tva }}</td>
+    <td>{{client.totalCaHt }}</td>
+  </tr>
+  </tbody>
+</table>
