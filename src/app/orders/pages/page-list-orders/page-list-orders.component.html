@@ -1,19 +1,26 @@
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th *ngFor="let header of headers">{{ header }}</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let order of orders$ |async">
-    <td>Actions</td>
-    <td>{{ order.typePresta }}</td>
-    <td>{{ order.client }}</td>
-    <td>{{ order.nbJours }}</td>
-    <td>{{ order.tjmHt }}</td>
-    <td>{{ order.tjmHt | total: order.nbJours | currency}}</td>
-    <td>{{order.tjmHt | total: order.nbJours: order.tva | currency }}</td>
-    <td appState [orderState]="order.state">{{order.state }}</td>
-  </tr>
-  </tbody>
-</table>
+<div *ngIf="orders$ |async as orders; else loading" class="table-wrapper">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th *ngFor="let header of headers">{{ header }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let order of orders">
+      <td>Actions</td>
+      <td>{{ order.typePresta }}</td>
+      <td>{{ order.client }}</td>
+      <td>{{ order.nbJours }}</td>
+      <td>{{ order.tjmHt }}</td>
+      <td>{{ order.tjmHt | total: order.nbJours | currency}}</td>
+      <td>{{order.tjmHt | total: order.nbJours: order.tva | currency }}</td>
+      <td appState [orderState]="order.state">{{order.state }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <app-button type='primary' label='Ajouter' link='/orders/add'>Chargement des commandes</app-button>
+</div>
+
+<ng-template #loading></ng-template>
+
+

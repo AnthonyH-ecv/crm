@@ -14,4 +14,8 @@ export class OrdersService {
   getOrders(): Observable<Order[]>{
     return this.httpClient.get<Order[]>(`${this.baseUrl}/orders`)
   }
+
+  postOrder(order: Order): Observable<Order> {
+    return this.httpClient.post<Order>(`${this.baseUrl}/orders`, order)
+  }
 }
