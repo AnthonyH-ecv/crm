@@ -1,1 +1,2 @@
-<p>page-edit-client works!</p>
+<app-form-client *ngIf="client" (submitted)="onEdit($event)" [client]='client'></app-form-client>
+

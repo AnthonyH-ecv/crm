@@ -1,1 +1,1 @@
-<p>page-edit-order works!</p>
+<app-form-order *ngIf="order" (submitted)="onEdit($event)" [order]="order"></app-form-order>

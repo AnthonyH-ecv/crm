@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Order } from '../../../core/models/order';
 import { OrdersService } from '../../services/orders.service';
@@ -9,7 +10,7 @@ import { OrdersService } from '../../services/orders.service';
   styleUrls: ['./page-list-orders.component.scss']
 })
 export class PageListOrdersComponent {
-  orders$ : Observable<Order[]>
+  orders$: Observable<Order[]>;
   headers: string[] = [
     'Action',
     'Type',
@@ -21,7 +22,11 @@ export class PageListOrdersComponent {
     'State',
   ];
 
-  constructor(private ordersService: OrdersService) {
-    this.orders$ = this.ordersService.getOrders()
+  constructor(private ordersService: OrdersService, private router: Router) {
+    this.orders$ = this.ordersService.getOrders();
+  }
+
+  onEdit(id: number) {
+    this.router.navigate(['orders', 'edit', id]);
   }
 }

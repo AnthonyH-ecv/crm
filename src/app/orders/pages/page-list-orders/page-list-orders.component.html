@@ -7,20 +7,20 @@
     </thead>
     <tbody>
     <tr *ngFor="let order of orders">
-      <td>Actions</td>
+      <td><button (click)="onEdit(order.id)" class="btn btn-secondary">Editer</button></td>
       <td>{{ order.typePresta }}</td>
       <td>{{ order.client }}</td>
       <td>{{ order.nbJours }}</td>
       <td>{{ order.tjmHt }}</td>
-      <td>{{ order.tjmHt | total: order.nbJours | currency}}</td>
-      <td>{{order.tjmHt | total: order.nbJours: order.tva | currency }}</td>
-      <td appState [orderState]="order.state">{{order.state }}</td>
+      <td>{{ order.tjmHt | total: { coef: order.nbJours} | currency}}</td>
+      <td>{{order.tjmHt | total: { coef: order.nbJours, tva: order.tva} | currency }}</td>
+      <td appState [state]="order.state">{{order.state }}</td>
     </tr>
     </tbody>
   </table>
-  <app-button type='primary' label='Ajouter' link='/orders/add'>Chargement des commandes</app-button>
+  <app-button type='primary' label='Ajouter' link='/orders/add'></app-button>
 </div>
 
-<ng-template #loading></ng-template>
+<ng-template #loading>Chargement des commandes</ng-template>
 
 

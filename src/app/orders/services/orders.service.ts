@@ -7,15 +7,24 @@ import { Order } from '../../core/models/order';
   providedIn: 'root'
 })
 export class OrdersService {
-  private baseUrl= 'http://localhost:3000'
+  private url = 'http://localhost:3000/orders';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+  }
 
-  getOrders(): Observable<Order[]>{
-    return this.httpClient.get<Order[]>(`${this.baseUrl}/orders`)
+  getOrders(): Observable<Order[]> {
+    return this.httpClient.get<Order[]>(this.url);
   }
 
   postOrder(order: Order): Observable<Order> {
-    return this.httpClient.post<Order>(`${this.baseUrl}/orders`, order)
+    return this.httpClient.post<Order>(this.url, order);
+  }
+
+  getOrderById(orderId: number): Observable<Order> {
+    return this.httpClient.get<Order>(`${this.url}/${orderId}`);
+  }
+
+  putOrder(order: Order): Observable<Order> {
+    return this.httpClient.put<Order>(`${this.url}/${order.id}`, order);
   }
 }

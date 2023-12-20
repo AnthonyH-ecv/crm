@@ -1,16 +1,22 @@
-<table class="table table-striped">
-  <thead>
-  <tr>
-    <th *ngFor="let header of headers">{{ header }}</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let client of clients$ |async">
-    <td>{{ client.name }}</td>
-    <td>{{ client.comment }}</td>
-    <td>{{ client.state }}</td>
-    <td>{{ client.tva }}</td>
-    <td>{{client.totalCaHt }}</td>
-  </tr>
-  </tbody>
-</table>
+<div *ngIf="clients$ |async as clients; else loading" class="table-wrapper">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th *ngFor="let header of headers">{{ header }}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let client of clients">
+      <td><button class="btn btn-secondary" (click)="onEdit(client.id)">Editer</button></td>
+      <td>{{ client.name }}</td>
+      <td>{{ client.comment }}</td>
+      <td appState [state]="client.state">{{ client.state }}</td>
+      <td>{{ client.tva }}</td>
+      <td>{{ client.totalCaHt | currency }}</td>
+      <td>{{ client.totalCaHt | total: {tva: client.tva} | currency }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <app-button type='primary' label='Ajouter' link='/clients/add'></app-button>
+</div>
+<ng-template #loading>Chargement des clients</ng-template>

@@ -1,20 +1,24 @@
 <div class="container">
-  <form [formGroup]='form' (ngSubmit)='onSubmit()' >
+  <form [formGroup]='form' (ngSubmit)='onSubmit()'>
 
     <div class="form-group">
       <label for="typePresta">Type</label>
       <input formControlName="typePresta" type="text" class="form-control" id="typePresta">
     </div>
+    <div *ngIf="form.controls['typePresta'].errors?.['minlength']">Ce champ doit contenir au minimum 5 caractères</div>
+    <div *ngIf="form.controls['typePresta'].errors?.['maxlength']">Ce champ doit contenir au maximum 10 caractères</div>
 
     <div class="form-group">
       <label for="client">Client</label>
-      <input formControlName="client" type="text" class="form-control" id="client" >
+      <input formControlName="client" type="text" class="form-control" id="client">
     </div>
 
     <div class="form-group">
       <label for="nbJours">Nombre de Jours</label>
       <input formControlName="nbJours" type="number" class="form-control" id="nbJours">
     </div>
+    <div *ngIf="form.controls['nbJours'].errors?.['min']">Nombre de jour minimum est de 1</div>
+    <div *ngIf="form.controls['nbJours'].errors?.['max']">Nombre de jour maximum est de 21</div>
 
     <div class="form-group">
       <label for="tjmHt">Tjm Ht</label>
@@ -23,24 +27,28 @@
 
     <div class="form-group">
       <label for="tva">Tva</label>
-      <input formControlName="tva" type="number" class="form-control" id="tva" >
+      <input formControlName="tva" type="number" class="form-control" id="tva">
     </div>
 
     <div class="form-group">
       <label for="state">State</label>
-      <select formControlName="state" class="form-control" id="state" >
+      <select formControlName="state" class="form-control" id="state">
         <option *ngFor="let state of states" [value]="state">{{ state }}</option>
       </select>
     </div>
 
     <div class="form-group">
       <label for="comment">Comment</label>
-      <textarea formControlName="comment" class="form-control" id="comment" ></textarea>
+      <textarea formControlName="comment" class="form-control" id="comment"></textarea>
     </div>
 
     <button
+      [disabled]='form.invalid'
       class='btn btn-primary'
-      type='submit'>Valider</button>
+      type='submit'>Valider
+    </button>
 
   </form>
 </div>
+
+invalid : {{ form.invalid }}

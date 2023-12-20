@@ -5,8 +5,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class TotalPipe implements PipeTransform {
 
-  transform(val: number, coef: number, tva?:number): number {
-    return tva ? val * coef * (1 + tva/100) : val * coef
+  transform(val: number, obj: { coef?: number, tva?: number }): number {
+    const { coef, tva } = obj;
+    const baseValue = val * (coef || 1);
+
+    if (tva) {
+      return baseValue * (1 + tva / 100);
+    }
+
+    return baseValue;
   }
+
 
 }
