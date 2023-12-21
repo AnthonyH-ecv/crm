@@ -8,6 +8,8 @@ import { PageListOrdersComponent } from './pages/page-list-orders/page-list-orde
 import { PageAddOrderComponent } from './pages/page-add-order/page-add-order.component';
 import { PageEditOrderComponent } from './pages/page-edit-order/page-edit-order.component';
 import { FormOrderComponent } from './components/form-order/form-order.component';
+import { DemoObservableFroidComponent } from './pages/demo-observable-froid/demo-observable-froid.component';
+import { DemoObservableChaudComponent } from './pages/demo-observable-chaud/demo-observable-chaud.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { FormOrderComponent } from './components/form-order/form-order.component
     PageListOrdersComponent,
     PageAddOrderComponent,
     PageEditOrderComponent,
-    FormOrderComponent
+    FormOrderComponent,
+    DemoObservableFroidComponent,
+    DemoObservableChaudComponent
   ],
   imports: [
     CommonModule,

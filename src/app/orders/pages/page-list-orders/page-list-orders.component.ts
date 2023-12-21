@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { StateOrder } from '../../../core/enums/state-order';
 import { Order } from '../../../core/models/order';
 import { OrdersService } from '../../services/orders.service';
 
@@ -11,6 +12,7 @@ import { OrdersService } from '../../services/orders.service';
 })
 export class PageListOrdersComponent {
   orders$: Observable<Order[]>;
+  states = Object.values(StateOrder);
   headers: string[] = [
     'Action',
     'Type',
@@ -28,5 +30,14 @@ export class PageListOrdersComponent {
 
   onEdit(id: number) {
     this.router.navigate(['orders', 'edit', id]);
+  }
+
+  changeState(order: Order, event: Event) {
+    const newState = (event.target as HTMLInputElement).value as StateOrder;
+    const newOrder: Order = { ...order, state: newState };
+
+    this.ordersService.putOrder(newOrder).subscribe((newOrder) => {
+      Object.assign(order, newOrder);
+    });
   }
 }

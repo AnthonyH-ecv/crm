@@ -12,6 +12,7 @@ export class FormOrderComponent implements OnInit {
   form!: FormGroup;
   @Input() order!: Order;
   @Output() submitted = new EventEmitter();
+  @Output() delete = new EventEmitter();
 
   states = Object.values(StateOrder);
 
@@ -45,8 +46,10 @@ export class FormOrderComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
     this.submitted.emit(this.form.value);
   }
 
+  onDelete() {
+    this.delete.emit(this.order.id)
+  }
 }

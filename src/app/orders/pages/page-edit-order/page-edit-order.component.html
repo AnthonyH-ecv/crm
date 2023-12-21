@@ -1,1 +1,10 @@
-<app-form-order *ngIf="order" (submitted)="onEdit($event)" [order]="order"></app-form-order>
+<app-form-order *ngIf="order" (delete)="onOpenModal()" (submitted)="onEdit($event)" [order]="order"></app-form-order>
+
+<app-modal *ngIf="isModalOpen">
+  <p class='modal-description'>Voulez-vous vraiment supprimer cette commande </p>
+  <div class="modal-buttons">
+    <button class="btn btn-danger" (click)="onDelete()">Supprimer</button>
+    <button class="btn btn-secondary" (click)="onOpenModal()">Annuler</button>
+  </div>
+</app-modal>
+

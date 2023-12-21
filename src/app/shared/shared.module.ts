@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { ButtonComponent } from './components/button/button.component';
 import { TotalPipe } from './pipes/total.pipe';
 import { StateDirective } from './directives/state.directive';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 
@@ -11,12 +12,14 @@ import { StateDirective } from './directives/state.directive';
     declarations: [
         ButtonComponent,
         TotalPipe,
-        StateDirective
+        StateDirective,
+        ModalComponent
     ],
   exports: [
     TotalPipe,
     StateDirective,
-    ButtonComponent
+    ButtonComponent,
+    ModalComponent
   ],
     imports: [
         CommonModule,

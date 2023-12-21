@@ -5,3 +5,15 @@
 .state-inactive {
   background: orange
 }
+
+th {
+  vertical-align: middle;
+}
+
+tr {
+  height: 70px;
+
+  td {
+    vertical-align: middle;
+  }
+}

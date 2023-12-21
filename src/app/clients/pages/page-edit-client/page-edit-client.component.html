@@ -1,2 +1,10 @@
-<app-form-client *ngIf="client" (submitted)="onEdit($event)" [client]='client'></app-form-client>
+<app-form-client *ngIf="client" (delete)="onOpenModal()" (submitted)="onEdit($event)" [client]='client'></app-form-client>
+
+<app-modal *ngIf="isModalOpen">
+  <p class='modal-description'>Voulez-vous vraiment supprimer ce client</p>
+  <div class="modal-buttons">
+    <button class="btn btn-danger" (click)="onDelete()">Supprimer</button>
+    <button class="btn btn-secondary" (click)="onOpenModal()">Annuler</button>
+  </div>
+</app-modal>
 

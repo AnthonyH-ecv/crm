@@ -10,7 +10,8 @@ import { ClientsService } from '../../services/client.service';
 })
 export class PageEditClientComponent {
   client!: Client
-  private clientId: number;
+  clientId: number;
+  isModalOpen = false;
 
 
   constructor(private clientsService: ClientsService, private activeRouter: ActivatedRoute, private router: Router) {
@@ -23,5 +24,16 @@ export class PageEditClientComponent {
     this.clientsService.putOrder(client).subscribe(() =>{
       this.router.navigate(['clients'])
     })
+  }
+
+  onDelete() {
+    this.clientsService.deleteClient(this.clientId).subscribe(() => {
+      this.router.navigate(['clients'])
+    })
+  }
+
+  onOpenModal() {
+    console.log('open')
+    this.isModalOpen = !this.isModalOpen;
   }
 }

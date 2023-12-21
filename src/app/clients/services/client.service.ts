@@ -27,4 +27,8 @@ export class ClientsService {
   putOrder(client: Client):  Observable<Client> {
     return this.httpClient.put<Client>(`${this.url}/${client.id}`,client)
   }
+
+  deleteClient(clientId: number): Observable<Client> {
+    return this.httpClient.delete<Client>(`${this.url}/${clientId}`);
+  }
 }

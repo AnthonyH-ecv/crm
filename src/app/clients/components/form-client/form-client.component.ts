@@ -12,6 +12,7 @@ export class FormClientComponent implements OnInit{
   form!: FormGroup;
   @Input() client!: Client;
   @Output() submitted = new EventEmitter();
+  @Output() delete = new EventEmitter();
 
   states = Object.values(StateClient);
 
@@ -33,4 +34,7 @@ export class FormClientComponent implements OnInit{
     this.submitted.emit(this.form.value);
   }
 
+  onDelete() {
+    this.delete.emit(this.client.id)
+  }
 }

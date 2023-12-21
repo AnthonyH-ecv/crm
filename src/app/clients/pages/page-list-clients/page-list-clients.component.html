@@ -10,10 +10,14 @@
       <td><button class="btn btn-secondary" (click)="onEdit(client.id)">Editer</button></td>
       <td>{{ client.name }}</td>
       <td>{{ client.comment }}</td>
-      <td appState [state]="client.state">{{ client.state }}</td>
       <td>{{ client.tva }}</td>
       <td>{{ client.totalCaHt | currency }}</td>
       <td>{{ client.totalCaHt | total: {tva: client.tva} | currency }}</td>
+      <td appState [state]="client.state">
+        <select (change)="changeState(client,$event)">
+          <option *ngFor="let state of states" [selected]="state === client.state">{{ state }}</option>
+        </select>
+      </td>
     </tr>
     </tbody>
   </table>

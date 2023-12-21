@@ -71,12 +71,12 @@
       "comment": "un comment pour client modis"
     },
     {
-      "state": "ACTIVE",
       "tva": 20,
-      "id": 2,
-      "name": "Modis",
+      "state": "ACTIVE",
+      "name": "Modis2",
+      "comment": "un comment pour client modis",
       "totalCaHt": 120000,
-      "comment": "un comment pour client modis"
+      "id": 2
     },
     {
       "tva": 20,
@@ -96,7 +96,7 @@
     },
     {
       "tva": 20,
-      "state": "ACTIVE",
+      "state": "INACTIVE",
       "name": "marco polo",
       "comment": "Bien",
       "totalCaHt": 120000,

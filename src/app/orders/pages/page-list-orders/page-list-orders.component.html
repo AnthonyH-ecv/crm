@@ -7,14 +7,20 @@
     </thead>
     <tbody>
     <tr *ngFor="let order of orders">
-      <td><button (click)="onEdit(order.id)" class="btn btn-secondary">Editer</button></td>
+      <td>
+        <button (click)="onEdit(order.id)" class="btn btn-secondary">Editer</button>
+      </td>
       <td>{{ order.typePresta }}</td>
       <td>{{ order.client }}</td>
       <td>{{ order.nbJours }}</td>
       <td>{{ order.tjmHt }}</td>
-      <td>{{ order.tjmHt | total: { coef: order.nbJours} | currency}}</td>
-      <td>{{order.tjmHt | total: { coef: order.nbJours, tva: order.tva} | currency }}</td>
-      <td appState [state]="order.state">{{order.state }}</td>
+      <td>{{ order.tjmHt | total: { coef: order.nbJours } | currency }}</td>
+      <td>{{ order.tjmHt | total: { coef: order.nbJours, tva: order.tva } | currency }}</td>
+      <td appState [state]="order.state">
+        <select (change)="changeState(order,$event)">
+          <option *ngFor="let state of states" [selected]="state === order.state" [value]="state">{{ state }}</option>
+        </select>
+      </td>
     </tr>
     </tbody>
   </table>
